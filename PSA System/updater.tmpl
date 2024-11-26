@@ -1,0 +1,9 @@
+{{/* Must be set with trigger RegEx `\A` and best to limit to psa channels */}}
+{{$channel := toString .Channel.ID}}
+{{$entry := (dbGet 0 "PSA").Value}}
+ 
+{{if not ($entry.Get $channel)}} {{return}} {{end}}
+ 
+{{$counter := add (index ($entry.Get $channel) 1) 1}}
+{{$entry.Set $channel (cslice currentTime $counter)}}
+{{dbSet 0 "PSA" $entry}}
