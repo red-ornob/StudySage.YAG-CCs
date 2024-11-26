@@ -1,0 +1,9 @@
+{{$entry := sdict}}
+{{$channellist := (cslice
+                  .Channel.ID
+                  )}} {{/* replace .Channel.ID with a list of channel IDs */}}
+
+{{range $channel := $channellist}}
+    {{$entry.Set (toString $channel) (cslice currentTime 0)}}
+{{end}}
+{{dbSet 0 "PSA" $entry}} {{/* feel free to change}}
