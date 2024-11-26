@@ -1,4 +1,4 @@
-{{/* Must be set with trigger RegEx `\A` and best to limit to psa channels */}}
+{{/* Must be set with trigger RegEx `\A` and best to limit to PSA channels */}}
 {{$channel := toString .Channel.ID}}
 {{$entry := (dbGet 0 "PSA").Value}}
  
