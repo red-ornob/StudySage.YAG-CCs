@@ -1,0 +1,18 @@
+{{$entry := (dbGet 0 "PSA").Value}}
+ 
+{{range $channel, $value := $entry}}
+	{{$time := index $value 0}}
+	{{$counter := index $value 1}}
+	{{$timereq := 6}}
+    {{$messagereq := 6}}
+	{{if eq $channel ".Channel.ID"}} {{/* replace with channel where you want it to be less likely, such as general */}}
+		{{$timereq = 96}}
+        {{$messagereq = 6}}
+	{{end}}
+	
+	{{if and (ge (toInt (currentTime.Sub $time).Hours) $timereq) (ge $counter $messagereq)}}
+		{{execCC # $channel 0 nil}} {{/* call the CC that will send the PSA to the channel */}}
+		{{$entry.Set $channel (cslice currentTime 0)}}
+		{{dbSet 0 "PSA" $entry}}
+	{{end}}
+{{end}}
