@@ -1,7 +1,10 @@
 {{$entry := sdict}}
 {{$channellist := (cslice
-                  .Channel.ID
-                  )}} {{/* replace .Channel.ID with a list of PSA channel IDs */}}
+                  .Channel.ID-1
+                  .Channel.ID-2
+                  .Channel.ID-3
+                  )
+}} {{/* replace .Channel.IDs with a list of PSA channel IDs */}}
 
 {{range $channel := $channellist}}
     {{$entry.Set (toString $channel) (cslice currentTime 0)}}
