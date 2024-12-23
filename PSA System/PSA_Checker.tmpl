@@ -4,11 +4,11 @@
 	{{$time := index $value 0}}
 	{{$counter := index $value 1}}
 	{{$timereq := 6}}
-    {{$messagereq := 6}}
-	{{if eq $channel ".Channel.ID"}} {{/* replace with channel where you want it to be less likely, such as general */}}
+	{{$messagereq := 6}}
+	{{if eq $channel "insert slow PSA channel ID"}} {{/* replace with channel where you want PSA to be less frequent, such as general-chat */}}
 		{{$timereq = 96}}
-        {{$messagereq = 6}}
-	{{end}}
+		{{$messagereq = 6}}
+	{{end}} {{/* copy paste for multiple slow PSA channels */}}
 	
 	{{if and (ge (toInt (currentTime.Sub $time).Hours) $timereq) (ge $counter $messagereq)}}
 		{{execCC # $channel 0 nil}} {{/* call the CC that will send the PSA to the channel */}}
