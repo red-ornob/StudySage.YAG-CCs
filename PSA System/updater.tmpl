@@ -3,6 +3,7 @@
 {{$entry := (dbGet 0 "PSA").Value}}
  
 {{if not ($entry.Get $channel)}} {{return}} {{end}}
+{{if eq $channel "insert slow PSA channel ID"}} {{return}} {{end}} {{/* copy and paste for nultiple slow PSA channels */}}
  
 {{$counter := add (index ($entry.Get $channel) 1) 1}}
 {{$entry.Set $channel (cslice currentTime $counter)}}
