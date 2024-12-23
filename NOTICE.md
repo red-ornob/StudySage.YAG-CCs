@@ -1,4 +1,4 @@
-This repo consists of a collection of commands I wrote for study sage.\
+This repo consists of a collection of commands I wrote for Study Sage.\
 Copyright (C) 2024 red-ornob.
 
 This collection is free software: you can redistribute it and/or modify\
