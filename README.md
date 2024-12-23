@@ -5,4 +5,4 @@
 A collection of YAGPDB commands I wrote for the Study Sage discord Server.
 
 
-Feel free to use these on your discord server and you contact me through my email for help.
+Feel free to use these on your discord server and you can contact me through my email for help.
